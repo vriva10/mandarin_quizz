@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 20px;
-    background-image: url('C:\Users\ck291981\Desktop\image\fond.jpg');  /* Remplacez avec le chemin de votre image */
+    background-image: url('fond.jpg');  /* Remplacez avec le chemin de votre image */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
