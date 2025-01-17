@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (currentTermIndex < termsToGuess.length) {
                 displayQuestion();
             } else {
-                document.querySelector('#feedback').textContent = "Félicitations ! Vous avez terminé le quiz.";
+                document.querySelector('#feedback').textContent = "Félicitations ! Vous avez terminé le quizz.";
                 document.querySelector('#feedback').style.color = 'blue';
                 document.querySelector('#restart').style.display = 'inline-block';
             }
