@@ -126,72 +126,86 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     let currentModule = null;
-    let currentTermIndex = 0;
-    let termsToGuess = [];
-    
-    // Sélection du module
-    const buttons = document.querySelectorAll('#module-selection button');
-    buttons.forEach(button => {
-        button.addEventListener('click', function () {
-            const moduleName = this.dataset.module;
-            currentModule = modules[moduleName];
+    let totalQuestions = 0;
+    let currentQuestionIndex = 0;
+    let score = 0;
 
-            // Affichage du quiz et préparation des termes
-            document.querySelector('#module-selection').style.display = 'none';
-            document.querySelector('#quiz-container').style.display = 'block';
+    const quizContainer = document.getElementById("quiz-container");
+    const questionElement = document.getElementById("question");
+    const feedbackElement = document.getElementById("feedback");
+    const answerInput = document.getElementById("answer");
+    const validateButton = document.getElementById("validate");
+    const restartButton = document.getElementById("restart");
+    const progressBar = document.getElementById("progress-bar");
 
-            termsToGuess = Object.keys(currentModule);
-            currentTermIndex = 0;
-
-            displayQuestion();
+    document.querySelectorAll("#module-selection button").forEach(button => {
+        button.addEventListener("click", () => {
+            const moduleKey = button.getAttribute("data-module");
+            if (modules[moduleKey]) {
+                currentModule = modules[moduleKey];
+                totalQuestions = Object.keys(currentModule).length;
+                currentQuestionIndex = 0;
+                score = 0;
+                startQuiz();
+            }
         });
     });
 
-    function displayQuestion() {
-        const currentTerm = termsToGuess[currentTermIndex];
-        document.querySelector('#question').textContent = `Quelle est la traduction de '${currentTerm}' ?`;
-        document.querySelector('#answer').value = '';  // Effacer le champ de réponse
-        document.querySelector('#feedback').textContent = '';  // Effacer le feedback
+    function startQuiz() {
+        document.getElementById("module-selection").style.display = "none";
+        quizContainer.style.display = "block";
+        displayQuestion();
+        updateProgressBar();
     }
 
-    // Validation de la réponse
-    document.querySelector('#validate').addEventListener('click', function () {
-        const userAnswer = document.querySelector('#answer').value.trim();
-        const correctAnswer = currentModule[termsToGuess[currentTermIndex]];
-
-        if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-            document.querySelector('#feedback').textContent = `Correct ! La traduction de '${termsToGuess[currentTermIndex]}' est '${correctAnswer}'.`;
-            document.querySelector('#feedback').style.color = 'green';
+    function displayQuestion() {
+        const questions = Object.keys(currentModule);
+        if (currentQuestionIndex < totalQuestions) {
+            questionElement.textContent = `Traduisez : ${questions[currentQuestionIndex]}`;
         } else {
-            document.querySelector('#feedback').textContent = `Incorrect. La bonne réponse est '${correctAnswer}'.`;
-            document.querySelector('#feedback').style.color = 'red';
+            endQuiz();
+        }
+    }
+
+    function updateProgressBar() {
+        const progress = (score / totalQuestions) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function endQuiz() {
+        questionElement.textContent = "Quiz terminé !";
+        validateButton.style.display = "none";
+        restartButton.style.display = "block";
+        answerInput.style.display = "none";
+        feedbackElement.textContent = `Votre score : ${score}/${totalQuestions}`;
+    }
+
+    validateButton.addEventListener("click", () => {
+        const questions = Object.keys(currentModule);
+        const correctAnswers = Object.values(currentModule);
+        const userAnswer = answerInput.value.trim();
+
+        if (userAnswer.toLowerCase() === correctAnswers[currentQuestionIndex].toLowerCase()) {
+            feedbackElement.textContent = "Bonne réponse !";
+            feedbackElement.style.color = "green";
+            score++;
+            updateProgressBar();
+        } else {
+            feedbackElement.textContent = `Faux ! La bonne réponse était : ${correctAnswers[currentQuestionIndex]}`;
+            feedbackElement.style.color = "red";
         }
 
-        // Passer à la question suivante après un délai
-        setTimeout(() => {
-            currentTermIndex++;
-
-            if (currentTermIndex < termsToGuess.length) {
-                displayQuestion();
-            } else {
-                document.querySelector('#feedback').textContent = "Félicitations ! Vous avez terminé le quizz.";
-                document.querySelector('#feedback').style.color = 'blue';
-                document.querySelector('#restart').style.display = 'inline-block';
-            }
-        }, 2000);  // 2 secondes avant la prochaine question
+        currentQuestionIndex++;
+        answerInput.value = "";
+        setTimeout(displayQuestion, 1000);
     });
 
-    // Gestion de la touche "Entrée" pour valider la réponse
-    document.querySelector('#answer').addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-            document.querySelector('#validate').click();
-        }
-    });
-
-    // Recommencer avec un autre module
-    document.querySelector('#restart').addEventListener('click', function () {
-        document.querySelector('#module-selection').style.display = 'block';
-        document.querySelector('#quiz-container').style.display = 'none';
-        document.querySelector('#restart').style.display = 'none';
+    restartButton.addEventListener("click", () => {
+        quizContainer.style.display = "none";
+        document.getElementById("module-selection").style.display = "block";
+        feedbackElement.textContent = "";
+        answerInput.style.display = "block";
+        validateButton.style.display = "block";
+        progressBar.style.width = "0%";
     });
 });
