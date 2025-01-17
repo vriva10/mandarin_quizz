@@ -1,4 +1,5 @@
-// Les modules avec leurs termes en mandarin
+document.addEventListener('DOMContentLoaded', function () {
+    // Les modules avec leurs termes en mandarin
 const termesVerbes = {
     "aller": "qu",
     "venir": "laai",
