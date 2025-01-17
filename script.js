@@ -1,112 +1,234 @@
 // Les modules avec leurs termes en mandarin
+const termesVerbes = {
+    "aller": "qu",
+    "venir": "laai",
+    "faire": "zuo",
+    "dire/parler": "shuooo",
+    "voir/regarder": "kàn",
+    "écouter": "tiiing",
+    "manger": "chiii",
+    "boire": "heee",
+    "écrire": "xiê",
+    "lire": "duu",
+    "étudier": "xué",
+    "savoir": "zhiiidào",
+    "(re)connaitre": "rènshi",
+    "aimer/apprécier": "xîhuaaan",
+    "vouloir (besoin) / devoir": "yào",
+    "vouloir (désirer) / penser": "xiâng",
+    "dormir": "shuijiào",
+    "acheter": "mâi",
+    "vendre": "mài",
+    "marcher/partir": "zôu",
+    "demander": "wèn",
+    "répondre": "huiidaa",
+    "attendre": "dêng",
+    "aider": "baaang",
+    "jouer/s'amuser": "waan",
+    "donner": "gêi",
+    "ouvrir/conduire": "kaaai",
+    "aimer": "ài",
+    "travailler": "gooongzuo",
+    "pouvoir (skill acquise, possibilité subjective)": "hui",
+    "pouvoir (skill naturel, possibilité objective et permission)": "néng",
+    "pouvoir (skill naturel, possibilité objective, conseil et permission)": "kê yî",
+    "cuisiner": "zuofàn",
+    "voyager": "lüûxiing",
+    "résider/habiter": "zhu"
+};
+
+const termesMomentsJournée = {
+    "nuit": "yèwân",
+    "soir": "wânshàng",
+    "après-midi": "xiàwû",
+    "midi": "zhooongwû",
+    "matin": "zâoshàng",
+    "aujourd'hui": "jiiintiaaan",
+    "demain": "miingtiaaan",
+    "hier": "zuootiaaan", 
+    "jour": "hào/tiaaan",
+    "mois": "yuè",
+    "année": "niaan",
+};
+
+const termesCompteurs = {
+    "personnes, fruits": "gè",
+    "animaux": "zhiii",
+    "livres": "bên", 
+    "objets longs, minces, flexibles": "tiaao",
+    "objets en bloc/ morceaux, argent": "kuài",
+    "objets plats": "zhaaang",
+    "boissons en récipient": "beeei",
+    "véhicules": "liàng",
+    "personnes (respectueux)": "wèi",
+    "paires": "shuaaang",
+};
+
+const termesMotsInterrogatifs = {
+    "- Questions fermées": "ma",
+    "- Qui": "shéi",
+    "- Quoi/quel": "shénme", 
+    "- Où": "nâlî",
+    "- Comment": "zênme",
+    "- Combien": "duoooshâo",
+    "- Quand": "shénme shiihou",
+    "- Pourquoi": "wèishénme",
+    "- Quelle (quantité, heure)": "jî",
+    "- Quel âge": "duooo dà",
+    "- Quelle (distance)": "duooo yuân",
+    "- Quelle (longueur)": "duooo chaang", 
+    "- Quelle (taille)": "duooo gaaao",
+    "- Qu'en est-il": "zênmeyàng",
+};
+
+const termesPrépositionsEspace = {
+    "à / dans / chez": "zài",
+    "sur / dessus": "shàng",
+    "sous / dessous": "xià",
+    "dans": "lî-miàn",
+    "dehors / à l'extérieur": "wài-miàn",
+    "devant": "qiaan-miàn",
+    "derrière": "hou-miàn",
+    "en face de": "dui-miàn",
+    "à côté de": "paangbiaaan",
+    "au milieu de / entre": "zhooongjiaaan",
+};
+
+const termesVale = {
+    "coeur": "xiiin",
+    "lapin": "tu",
+    "gâteau": "dàngaaao",
+    "étoiles": "xiiing",
+    "Jupiter": "muxiiing",
+    "petit": "xiâo",
+    "mangue": "maang guô",
+    "tarp": "hou(miàn)",
+    "peticopuine": "nüûpéngyôu",  
+};
+
+const termesEspace = {
+    "planète": "xiinxiiing",
+    "Terre": "tu",
+    "Lune": "dàngaaao",
+    "étoile": "xiiing",
+    "Soleil": "muxiiing",
+    "Mars": "xiâo",
+};
+
+const termesCouleurs = {
+    "rouge": "hoongsè",
+    "bleu": "laansè",
+    "jaune": "huuangsè",
+    "vert": "lüûsè",
+    "noir": "heeeisè",
+    "blanc": "baaisè",
+    "violet": "zîsè",
+    "orange": "chéngsè",
+    "rose": "fênhoongsè",
+    "gris": "huìsè",
+    "marron": "hooongsè",
+};
+
+const termesTest = {
+    "test": "ok",
+};
+
 const modules = {
-    verbs: {
-        "aller": "qu",
-        "venir": "laai",
-        "faire": "zuo",
-        "voir": "kàn"
-    },
-    time: {
-        "nuit": "yèwân",
-        "soir": "wânshàng",
-        "matin": "zâoshàng"
-    },
-    counters: {
-        "personnes": "gè",
-        "animaux": "zhiii",
-        "livres": "bên"
-    },
-    questions: {
-        "Qui": "shéi",
-        "Quoi": "shénme",
-        "Pourquoi": "wèishénme"
-    },
-    space: {
-        "à": "zài",
-        "sur": "shàng",
-        "sous": "xià"
-    }
+    "Verbes": termesVerbes,
+    "Moments de la journée": termesMomentsJournée,
+    "Compteurs": termesCompteurs,
+    "Mots interrogatifs": termesMotsInterrogatifs,
+    "Prépositions d'espace": termesPrépositionsEspace,
+    "Vale": termesVale,
+    "Espace": termesEspace,
+    "Couleurs": termesCouleurs,
+    "Test": termesTest
 };
 
 let currentModule = null;
-let termsToGuess = [];
-let currentTerm = null;
 
-const moduleSelectionDiv = document.getElementById("module-selection");
-const quizContainerDiv = document.getElementById("quiz-container");
-const questionElement = document.getElementById("question");
-const answerInput = document.getElementById("answer");
-const validateButton = document.getElementById("validate");
-const feedbackElement = document.getElementById("feedback");
-const restartButton = document.getElementById("restart");
+function choisirModule() {
+    let moduleSelection = prompt("Choisissez un module :\n1. Verbes\n2. Moments de la journée\n3. Compteurs\n4. Mots interrogatifs\n5. Prépositions d'espace\n6. Vale\n7. Espace\n8. Couleurs\n9. Test");
 
-// Fonction pour démarrer un module
-function startModule(moduleName) {
-    currentModule = modules[moduleName];
-    termsToGuess = Object.keys(currentModule);
-    currentTerm = null;
+    switch(moduleSelection) {
+        case "1":
+            currentModule = termesVerbes;
+            break;
+        case "2":
+            currentModule = termesMomentsJournée;
+            break;
+        case "3":
+            currentModule = termesCompteurs;
+            break;
+        case "4":
+            currentModule = termesMotsInterrogatifs;
+            break;
+        case "5":
+            currentModule = termesPrépositionsEspace;
+            break;
+        case "6":
+            currentModule = termesVale;
+            break;
+        case "7":
+            currentModule = termesEspace;
+            break;
+        case "8":
+            currentModule = termesCouleurs;
+            break;
+        case "9":
+            currentModule = termesTest;
+            break;
+        default:
+            alert("Module non valide, essayez encore !");
+            return choisirModule();
+    }
 
-    moduleSelectionDiv.style.display = "none";
-    quizContainerDiv.style.display = "block";
-
-    nextQuestion();
+    jouerQuiz(currentModule);
 }
 
-// Fonction pour afficher la question suivante
-function nextQuestion() {
-    if (termsToGuess.length > 0) {
-        const randomIndex = Math.floor(Math.random() * termsToGuess.length);
-        currentTerm = termsToGuess.splice(randomIndex, 1)[0]; // Retirer le terme
-        questionElement.textContent = `Quelle est la traduction de "${currentTerm}" en mandarin ?`;
-        feedbackElement.textContent = "";
-        answerInput.value = "";
-        answerInput.focus();
-    } else {
-        questionElement.textContent = "Félicitations ! Vous avez terminé le module.";
-        feedbackElement.textContent = "";
-        answerInput.style.display = "none";
-        validateButton.style.display = "none";
-        restartButton.style.display = "block";
+function jouerQuiz(termes) {
+    let termesToGuess = Object.keys(termes);
+    let termesFound = [];
+    let frise = Array(termesToGuess.length).fill('grey');
+    
+    alert("Bienvenue dans le quiz !");
+    let questionIndex = 0;
+
+    function askQuestion() {
+        if (questionIndex < termesToGuess.length) {
+            let terme = termesToGuess[questionIndex];
+            let traduction = prompt(`Quelle est la traduction en mandarin de '${terme}' ?`);
+            let correcte = termes[terme];
+
+            if (traduction === correcte) {
+                alert("Correct ! Passons à la question suivante.");
+                termesFound.push(terme);
+                frise[questionIndex] = 'green';  // Réussi
+                questionIndex++;
+                afficherFrise(frise, termesToGuess, termesFound);
+                askQuestion();  // Poser la prochaine question
+            } else {
+                alert("Incorrect ! Réessayez.");
+                askQuestion();  // Refaire la même question
+            }
+        } else {
+            alert("Félicitations ! Vous avez terminé ce module.");
+            proposerAutreModule();
+        }
     }
+
+    askQuestion();  // Lancer la première question
 }
 
-// Fonction pour valider la réponse
-function validateAnswer() {
-    const userAnswer = answerInput.value.trim();
-    const correctAnswer = currentModule[currentTerm];
-
-    if (userAnswer === correctAnswer) {
-        feedbackElement.textContent = "Correct ! Passons à la question suivante.";
-        setTimeout(nextQuestion, 1000); // Pause avant la question suivante
-    } else {
-        feedbackElement.textContent = `Incorrect. La bonne réponse était "${correctAnswer}". Passons à la suivante.`;
-        setTimeout(nextQuestion, 2000);
-    }
+function afficherFrise(frise, termesOrdered, termesFound) {
+    // Affiche la progression de l'utilisateur (utiliser une bibliothèque comme chart.js ou autre pour un graphique)
+    console.log("Frise de progression:", frise);
+    console.log("Termes trouvés:", termesFound);
 }
 
-// Réinitialiser le quiz pour choisir un autre module
-restartButton.addEventListener("click", () => {
-    moduleSelectionDiv.style.display = "block";
-    quizContainerDiv.style.display = "none";
-    answerInput.style.display = "inline";
-    validateButton.style.display = "inline";
-    restartButton.style.display = "none";
-});
+function proposerAutreModule() {
+    let choix = prompt("Souhaitez-vous choisir un autre module ? (oui / non)");
+    if (choix.toLowerCase() === "oui") {
+        choisirModule();
+    } else
 
-// Déclencheur pour la validation
-validateButton.addEventListener("click", validateAnswer);
-
-// Permettre de valider avec la touche "Entrée"
-answerInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        validateAnswer();
-    }
-});
-
-// Gestion de la sélection de module
-document.querySelectorAll("#module-selection button").forEach((button) => {
-    button.addEventListener("click", (event) => {
-        const moduleName = event.target.dataset.module;
-        startModule(moduleName);
-    });
-});
