@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let totalQuestions = 0;
     let currentQuestionIndex = 0;
     let score = 0;
+    let shuffledQuestions = []; // Liste mélangée des questions
 
     const quizContainer = document.getElementById("quiz-container");
     const questionElement = document.getElementById("question");
@@ -146,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 totalQuestions = Object.keys(currentModule).length;
                 currentQuestionIndex = 0;
                 score = 0;
+                shuffledQuestions = shuffleArray(Object.keys(currentModule)); // Mélanger les questions
                 startQuiz();
             }
         });
@@ -159,16 +161,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function displayQuestion() {
-        const questions = Object.keys(currentModule);
         if (currentQuestionIndex < totalQuestions) {
-            questionElement.textContent = `Traduisez : ${questions[currentQuestionIndex]}`;
+            const currentQuestion = shuffledQuestions[currentQuestionIndex];
+            questionElement.textContent = `Traduisez : ${currentQuestion}`;
         } else {
             endQuiz();
         }
     }
 
     function updateProgressBar() {
-        // Calculer le pourcentage de progression
         const progress = (currentQuestionIndex / totalQuestions) * 100;
         progressBar.style.width = `${progress}%`;
     }
@@ -182,22 +183,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     validateButton.addEventListener("click", () => {
-        const questions = Object.keys(currentModule);
         const correctAnswers = Object.values(currentModule);
+        const currentQuestion = shuffledQuestions[currentQuestionIndex];
+        const correctAnswer = currentModule[currentQuestion];
         const userAnswer = answerInput.value.trim();
 
-        if (userAnswer.toLowerCase() === correctAnswers[currentQuestionIndex].toLowerCase()) {
+        if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
             feedbackElement.textContent = "Bonne réponse !";
             feedbackElement.style.color = "green";
             score++;
         } else {
-            feedbackElement.textContent = `Faux ! La bonne réponse était : ${correctAnswers[currentQuestionIndex]}`;
+            feedbackElement.textContent = `Faux ! La bonne réponse était : ${correctAnswer}`;
             feedbackElement.style.color = "red";
         }
 
         currentQuestionIndex++;
         answerInput.value = "";
-        updateProgressBar(); // Mettre à jour la barre après chaque réponse
+        updateProgressBar();
         setTimeout(() => {
             feedbackElement.textContent = "";
             displayQuestion();
@@ -210,6 +212,15 @@ document.addEventListener('DOMContentLoaded', function () {
         feedbackElement.textContent = "";
         answerInput.style.display = "block";
         validateButton.style.display = "block";
-        progressBar.style.width = "0%"; // Réinitialiser la barre
+        progressBar.style.width = "0%";
     });
+
+    // Fonction pour mélanger un tableau (algorithme de Fisher-Yates)
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
 });
