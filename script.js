@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
             "cuisiner": "zuofàn",
             "voyager": "lüûxiing",
             "résider/habiter": "zhu"
-        };
+        },
 
         time: {
             "nuit": "yèwân",
