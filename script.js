@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
         feedbackElement.textContent = `Votre score : ${score}/${totalQuestions}`;
     }
 
-   // Validation de la réponse
+    // Validation de la réponse
     validateButton.addEventListener("click", validateAnswer);
     
     // Ajout de la validation avec la touche "Entrée"
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
             feedbackElement.textContent = "";
             displayQuestion();
         }, 1000);
-    });
+    }
 
     // Redémarrer le quiz après la fin ou après une mauvaise réponse
     restartButton.addEventListener("click", () => {
