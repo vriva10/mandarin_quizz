@@ -130,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentQuestionIndex = 0;
     let score = 0;
     let shuffledQuestions = []; // Liste mélangée des questions
+    let progress = 0;  // Initialisation de la barre de progression
 
     const quizContainer = document.getElementById("quiz-container");
     const questionElement = document.getElementById("question");
@@ -139,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const restartButton = document.getElementById("restart");
     const progressBar = document.getElementById("progress-bar");
 
+    // Sélectionner un module et démarrer le quiz
     document.querySelectorAll("#module-selection button").forEach(button => {
         button.addEventListener("click", () => {
             const moduleKey = button.getAttribute("data-module");
@@ -147,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 totalQuestions = Object.keys(currentModule).length;
                 currentQuestionIndex = 0;
                 score = 0;
+                progress = 0;  // Réinitialiser la barre de progression
                 shuffledQuestions = shuffleArray(Object.keys(currentModule)); // Mélanger les questions
                 startQuiz();
             }
@@ -170,8 +173,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateProgressBar() {
-        const progress = (currentQuestionIndex / totalQuestions) * 100;
-        progressBar.style.width = `${progress}%`;
+        const progressPercent = (progress / totalQuestions) * 100;
+        progressBar.style.width = `${progressPercent}%`;
     }
 
     function endQuiz() {
@@ -182,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
         feedbackElement.textContent = `Votre score : ${score}/${totalQuestions}`;
     }
 
+    // Validation de la réponse
     validateButton.addEventListener("click", () => {
         const correctAnswers = Object.values(currentModule);
         const currentQuestion = shuffledQuestions[currentQuestionIndex];
@@ -192,9 +196,11 @@ document.addEventListener('DOMContentLoaded', function () {
             feedbackElement.textContent = "Bonne réponse !";
             feedbackElement.style.color = "green";
             score++;
+            progress += 1;  // Augmenter la barre de progression
         } else {
             feedbackElement.textContent = `Faux ! La bonne réponse était : ${correctAnswer}`;
             feedbackElement.style.color = "red";
+            progress = 0;  // Réinitialiser la barre de progression à 0 pour chaque mauvaise réponse
         }
 
         currentQuestionIndex++;
@@ -206,13 +212,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1000);
     });
 
+    // Redémarrer le quiz après la fin ou après une mauvaise réponse
     restartButton.addEventListener("click", () => {
         quizContainer.style.display = "none";
         document.getElementById("module-selection").style.display = "block";
         feedbackElement.textContent = "";
         answerInput.style.display = "block";
         validateButton.style.display = "block";
-        progressBar.style.width = "0%";
+        progressBar.style.width = "0%";  // Réinitialiser la barre de progression à 0
     });
 
     // Fonction pour mélanger un tableau (algorithme de Fisher-Yates)
