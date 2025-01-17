@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 20px;
-    background-image: url('fond2.jpg');  /* Remplacez avec le chemin de votre image */
+    background-image: url('fond2.jpg'); /* Remplacez avec le chemin de votre image */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -16,13 +16,14 @@ h1 {
     color: #007BFF;
 }
 
-/* Style pour le texte de bienvenue */
+/* Style pour la phrase de bienvenue */
 #welcome-text {
     font-weight: bold; /* Met le texte en gras */
     color: black; /* Couleur principale du texte */
     text-shadow: 1px 1px 2px white; /* Ajoute un contour blanc */
     font-size: 18px; /* Ajuste la taille du texte si nécessaire */
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Ajoute un espacement sous le texte */
+}
 
 /* Style pour les boutons */
 button {
