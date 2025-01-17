@@ -147,88 +147,81 @@ const modules = {
 
 let currentModule = null;
 
-function choisirModule() {
-    let moduleSelection = prompt("Choisissez un module :\n1. Verbes\n2. Moments de la journée\n3. Compteurs\n4. Mots interrogatifs\n5. Prépositions d'espace\n6. Vale\n7. Espace\n8. Couleurs\n9. Test");
+document.addEventListener('DOMContentLoaded', function () {
+    // Gérer la sélection du module
+    const buttons = document.querySelectorAll('#module-selection button');
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            const moduleName = this.dataset.module;
+            currentModule = modules[moduleName];
 
-    switch(moduleSelection) {
-        case "1":
-            currentModule = termesVerbes;
-            break;
-        case "2":
-            currentModule = termesMomentsJournée;
-            break;
-        case "3":
-            currentModule = termesCompteurs;
-            break;
-        case "4":
-            currentModule = termesMotsInterrogatifs;
-            break;
-        case "5":
-            currentModule = termesPrépositionsEspace;
-            break;
-        case "6":
-            currentModule = termesVale;
-            break;
-        case "7":
-            currentModule = termesEspace;
-            break;
-        case "8":
-            currentModule = termesCouleurs;
-            break;
-        case "9":
-            currentModule = termesTest;
-            break;
-        default:
-            alert("Module non valide, essayez encore !");
-            return choisirModule();
-    }
+            // Afficher le quiz
+            document.querySelector('#module-selection').style.display = 'none';
+            document.querySelector('#quiz-container').style.display = 'block';
 
-    jouerQuiz(currentModule);
-}
+            // Commencer le quiz
+            startQuiz();
+        });
+    });
 
-function jouerQuiz(termes) {
-    let termesToGuess = Object.keys(termes);
-    let termesFound = [];
-    let frise = Array(termesToGuess.length).fill('grey');
-    
-    alert("Bienvenue dans le quiz !");
-    let questionIndex = 0;
+    function startQuiz() {
+        const terms = Object.keys(currentModule);
+        let currentTermIndex = 0;
 
-    function askQuestion() {
-        if (questionIndex < termesToGuess.length) {
-            let terme = termesToGuess[questionIndex];
-            let traduction = prompt(`Quelle est la traduction en mandarin de '${terme}' ?`);
-            let correcte = termes[terme];
+        // Affiche la première question
+        displayQuestion(terms[currentTermIndex]);
 
-            if (traduction === correcte) {
-                alert("Correct ! Passons à la question suivante.");
-                termesFound.push(terme);
-                frise[questionIndex] = 'green';  // Réussi
-                questionIndex++;
-                afficherFrise(frise, termesToGuess, termesFound);
-                askQuestion();  // Poser la prochaine question
-            } else {
-                alert("Incorrect ! Réessayez.");
-                askQuestion();  // Refaire la même question
+        // Gestion du clic sur "Valider"
+        document.querySelector('#validate').addEventListener('click', function () {
+            checkAnswer(terms[currentTermIndex], document.querySelector('#answer').value);
+        });
+
+        // Gestion de la touche "Entrée" pour valider la réponse
+        document.querySelector('#answer').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                checkAnswer(terms[currentTermIndex], document.querySelector('#answer').value);
             }
-        } else {
-            alert("Félicitations ! Vous avez terminé ce module.");
-            proposerAutreModule();
+        });
+
+        function displayQuestion(term) {
+            document.querySelector('#question').textContent = `Quelle est la traduction de '${term}' ?`;
+            document.querySelector('#answer').value = '';  // Effacer le champ de réponse
+            document.querySelector('#feedback').textContent = '';  // Effacer le feedback précédent
+        }
+
+        function checkAnswer(term, userAnswer) {
+            const correctAnswer = currentModule[term];
+
+            // Vérifier si la réponse est correcte
+            if (userAnswer.trim().toLowerCase() === correctAnswer.toLowerCase()) {
+                document.querySelector('#feedback').textContent = `Correct ! La traduction de '${term}' est '${correctAnswer}'.`;
+                document.querySelector('#feedback').style.color = 'green';
+            } else {
+                document.querySelector('#feedback').textContent = `Incorrect. La bonne réponse est '${correctAnswer}'.`;
+                document.querySelector('#feedback').style.color = 'red';
+            }
+
+            // Passer à la question suivante après une courte pause
+            setTimeout(function () {
+                currentTermIndex++;
+
+                if (currentTermIndex < terms.length) {
+                    displayQuestion(terms[currentTermIndex]);
+                } else {
+                    document.querySelector('#feedback').textContent = "Félicitations ! Vous avez terminé le quiz.";
+                    document.querySelector('#feedback').style.color = 'blue';
+                    document.querySelector('#restart').style.display = 'inline-block';
+                }
+            }, 2000);  // Pause de 2 secondes avant de passer à la question suivante
         }
     }
 
-    askQuestion();  // Lancer la première question
-}
-
-function afficherFrise(frise, termesOrdered, termesFound) {
-    // Affiche la progression de l'utilisateur (utiliser une bibliothèque comme chart.js ou autre pour un graphique)
-    console.log("Frise de progression:", frise);
-    console.log("Termes trouvés:", termesFound);
-}
-
-function proposerAutreModule() {
-    let choix = prompt("Souhaitez-vous choisir un autre module ? (oui / non)");
-    if (choix.toLowerCase() === "oui") {
-        choisirModule();
+    // Bouton pour recommencer le quiz avec un autre module
+    document.querySelector('#restart').addEventListener('click', function () {
+        document.querySelector('#module-selection').style.display = 'block';
+        document.querySelector('#quiz-container').style.display = 'none';
+        document.querySelector('#restart').style.display = 'none';
+    });
+});
     } else
 
