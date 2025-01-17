@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Mandarin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Quiz Mandarin</h1>
+    <p>Bienvenue! Choisissez un module pour commencer le quiz.</p>
+    <div id="module-selection">
+        <button data-module="verbs">Verbes</button>
+        <button data-module="time">Moments de la journée</button>
+        <button data-module="counters">Compteurs</button>
+        <button data-module="questions">Mots interrogatifs</button>
+        <button data-module="space">Prépositions d'espace</button>
+    </div>
+
+    <div id="quiz-container" style="display: none;">
+        <p id="question"></p>
+        <input type="text" id="answer" placeholder="Entrez votre réponse...">
+        <button id="validate">Valider</button>
+        <p id="feedback"></p>
+        <button id="restart" style="display: none;">Choisir un autre module</button>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
+
