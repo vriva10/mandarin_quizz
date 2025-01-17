@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    
     // Les modules avec leurs termes en mandarin
 const termesVerbes = {
     "aller": "qu",
@@ -148,7 +149,6 @@ const modules = {
 
 let currentModule = null;
 
-document.addEventListener('DOMContentLoaded', function () {
     // Gérer la sélection du module
     const buttons = document.querySelectorAll('#module-selection button');
     buttons.forEach(button => {
@@ -224,5 +224,3 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('#restart').style.display = 'none';
     });
 });
-    } else
-
