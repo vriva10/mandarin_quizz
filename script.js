@@ -185,8 +185,17 @@ document.addEventListener('DOMContentLoaded', function () {
         feedbackElement.textContent = `Votre score : ${score}/${totalQuestions}`;
     }
 
-    // Validation de la réponse
-    validateButton.addEventListener("click", () => {
+   // Validation de la réponse
+    validateButton.addEventListener("click", validateAnswer);
+    
+    // Ajout de la validation avec la touche "Entrée"
+    answerInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            validateAnswer();
+        }
+    });
+
+    function validateAnswer() {
         const correctAnswers = Object.values(currentModule);
         const currentQuestion = shuffledQuestions[currentQuestionIndex];
         const correctAnswer = currentModule[currentQuestion];
