@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById("module-selection").style.display = "none";
         quizContainer.style.display = "block";
         displayQuestion();
-        updateProgressBar();
+        updateProgressBar(); // Initialisation de la barre au début du quiz
     }
 
     function displayQuestion() {
@@ -168,7 +168,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateProgressBar() {
-        const progress = (score / totalQuestions) * 100;
+        // Calculer le pourcentage de progression
+        const progress = (currentQuestionIndex / totalQuestions) * 100;
         progressBar.style.width = `${progress}%`;
     }
 
@@ -189,7 +190,6 @@ document.addEventListener('DOMContentLoaded', function () {
             feedbackElement.textContent = "Bonne réponse !";
             feedbackElement.style.color = "green";
             score++;
-            updateProgressBar();
         } else {
             feedbackElement.textContent = `Faux ! La bonne réponse était : ${correctAnswers[currentQuestionIndex]}`;
             feedbackElement.style.color = "red";
@@ -197,7 +197,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         currentQuestionIndex++;
         answerInput.value = "";
-        setTimeout(displayQuestion, 1000);
+        updateProgressBar(); // Mettre à jour la barre après chaque réponse
+        setTimeout(() => {
+            feedbackElement.textContent = "";
+            displayQuestion();
+        }, 1000);
     });
 
     restartButton.addEventListener("click", () => {
@@ -206,6 +210,6 @@ document.addEventListener('DOMContentLoaded', function () {
         feedbackElement.textContent = "";
         answerInput.style.display = "block";
         validateButton.style.display = "block";
-        progressBar.style.width = "0%";
+        progressBar.style.width = "0%"; // Réinitialiser la barre
     });
 });
