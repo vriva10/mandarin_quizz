@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
             "gris": "huìsè",
             "marron": "hooongsè",
             "jaune": "huuangsè",
-        },
+        }
     };
 
     let currentModule = null;
