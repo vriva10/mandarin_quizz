@@ -16,6 +16,14 @@ h1 {
     color: #007BFF;
 }
 
+/* Style pour le texte de bienvenue */
+#welcome-text {
+    font-weight: bold; /* Met le texte en gras */
+    color: black; /* Couleur principale du texte */
+    text-shadow: 1px 1px 2px white; /* Ajoute un contour blanc */
+    font-size: 18px; /* Ajuste la taille du texte si nécessaire */
+    margin-bottom: 20px;
+
 /* Style pour les boutons */
 button {
     padding: 10px 20px;
