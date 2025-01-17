@@ -68,3 +68,21 @@ input {
     margin-top: 20px;
     font-weight: bold;
 }
+/* Conteneur de la barre de progression */
+#progress-bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0;
+    height: 20px;
+    overflow: hidden;
+}
+
+/* Barre de progression */
+#progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #007BFF;
+    transition: width 0.5s ease;
+}
