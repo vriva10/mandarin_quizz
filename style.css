@@ -1,15 +1,22 @@
+/* Appliquer l'image de fond à toute la page */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 20px;
-    background-color: #f9f9f9;
+    background-image: url('images/fond.jpg');  /* Remplacez avec le chemin de votre image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: #333;
+    height: 100vh; /* S'assurer que l'image couvre toute la hauteur de la page */
 }
 
+/* Style pour le titre */
 h1 {
     color: #007BFF;
 }
 
+/* Style pour les boutons */
 button {
     padding: 10px 20px;
     font-size: 16px;
@@ -25,6 +32,7 @@ button:hover {
     background-color: #0056b3;
 }
 
+/* Style pour le conteneur du quiz */
 #quiz-container {
     margin: 20px auto;
     padding: 20px;
@@ -35,6 +43,7 @@ button:hover {
     display: none;
 }
 
+/* Style pour le champ de réponse */
 input {
     padding: 10px;
     font-size: 16px;
@@ -44,6 +53,7 @@ input {
     border-radius: 5px;
 }
 
+/* Style pour le feedback */
 #feedback {
     margin-top: 20px;
     font-weight: bold;
