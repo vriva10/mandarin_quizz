@@ -240,3 +240,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return array;
     }
 });
+// Retourner au menu principal
+    backToMenuButton.addEventListener("click", () => {
+        quizContainer.style.display = "none";
+        document.getElementById("module-selection").style.display = "block";
+        backToMenuButton.style.display = "none"; // Masquer le bouton "Retour au menu"
+    });
+});
