@@ -240,10 +240,22 @@ document.addEventListener('DOMContentLoaded', function () {
         return array;
     }
     
-    // Retourner au menu principal
-    backToMenuButton.addEventListener("click", () => {
-        quizContainer.style.display = "none";
-        document.getElementById("module-selection").style.display = "block";
-        backToMenuButton.style.display = "none"; // Masquer le bouton "Retour au menu"
+    // Afficher le bouton "Retour au menu" quand on commence un module
+function startQuiz() {
+    document.getElementById("module-selection").style.display = "none";
+    quizContainer.style.display = "block";
+    displayQuestion();
+    updateProgressBar(); // Initialisation de la barre au début du quiz
+    
+    // Rendre le bouton visible
+    document.getElementById("back-to-menu").style.display = "block";
+    }
+
+    // Event listener pour le bouton "Retour au menu"
+    document.getElementById("back-to-menu").addEventListener("click", function () {
+    // Retour au menu
+    quizContainer.style.display = "none";
+    document.getElementById("module-selection").style.display = "block";
+    document.getElementById("back-to-menu").style.display = "none"; // Cacher à nouveau
     });
 });
