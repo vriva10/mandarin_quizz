@@ -239,8 +239,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return array;
     }
-});
-// Retourner au menu principal
+    });
+    // Retourner au menu principal
     backToMenuButton.addEventListener("click", () => {
         quizContainer.style.display = "none";
         document.getElementById("module-selection").style.display = "block";
