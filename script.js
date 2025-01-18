@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return array;
     }
-    });
+    
     // Retourner au menu principal
     backToMenuButton.addEventListener("click", () => {
         quizContainer.style.display = "none";
