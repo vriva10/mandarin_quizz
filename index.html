@@ -3,47 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quizz Mandarin</title>
+    <title>Choisissez un Quizz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Conteneur du bouton Retour au menu -->
+    <!-- Menu principal de sélection -->
+    <h1>Choisissez un Quizz</h1>
+
+    <div id="game-selection">
+        <button id="mandarin-button">Quizz Mandarin</button>
+        <button id="geology-button">Quizz Géologique</button>
+    </div>
+
+    <!-- Conteneur du bouton Retour au menu (initialement masqué) -->
     <header>
         <button id="back-to-menu" style="display: none;">Retour au menu</button>
     </header>
 
-    <h1>Quizz Mandarin</h1>
-    <!-- Ajout d'une classe pour styliser facilement -->
-    <p id="welcome-text" class="highlight">Bienvenue ! Choisissez un module pour commencer le quizz.</p>
-    
-    <div id="module-selection">
-        <button data-module="verbs">Verbes</button>
-        <button data-module="time">Moments de la journée</button>
-        <button data-module="counters">Compteurs</button>
-        <button data-module="questions">Mots interrogatifs</button>
-        <button data-module="space">Prépositions d'espace</button>
-        <button data-module="Vale">Vale</button>
-        <button data-module="Espace">Espace</button>
-        <button data-module="Couleurs">Couleurs</button>
-    </div>
-
+    <!-- Quizz Mandarin (par défaut caché tant qu'un module n'est pas sélectionné) -->
     <div id="quiz-container" style="display: none;">
-        <p id="question"></p>
-        <div id="progress-bar-container">
-            <div id="progress-bar"></div>
+        <h1>Quizz Mandarin</h1>
+        <p id="welcome-text" class="highlight">Bienvenue ! Choisissez un module pour commencer le quizz.</p>
+
+        <div id="module-selection">
+            <button data-module="verbs">Verbes</button>
+            <button data-module="time">Moments de la journée</button>
+            <button data-module="counters">Compteurs</button>
+            <button data-module="questions">Mots interrogatifs</button>
+            <button data-module="space">Prépositions d'espace</button>
+            <button data-module="Vale">Vale</button>
+            <button data-module="Espace">Espace</button>
+            <button data-module="Couleurs">Couleurs</button>
         </div>
-        <input type="text" id="answer" placeholder="Entrez votre réponse...">
-        <button id="validate">Valider</button>
-        <p id="feedback"></p>
-        <button id="restart" style="display: none;">Choisir un autre module</button>
+
+        <div id="quiz-container" style="display: none;">
+            <p id="question"></p>
+            <div id="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+            <input type="text" id="answer" placeholder="Entrez votre réponse...">
+            <button id="validate">Valider</button>
+            <p id="feedback"></p>
+            <button id="restart" style="display: none;">Choisir un autre module</button>
+        </div>
+
+        <!-- Bouton pour accéder à l'option Entrainement -->
+        <div>
+            <a href="entrainement.html"><button>Entraînement</button></a>
+        </div>
     </div>
 
-    <!-- Bouton pour accéder à l'option Entrainement -->
-    <div>
-        <a href="entrainement.html"><button>Entraînement</button></a>
-    </div>
-
-    <!-- Lien avec le fichier JS -->
+    <!-- Lien vers le fichier JS -->
     <script src="script.js" defer></script>
 </body>
 </html>
