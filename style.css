@@ -13,7 +13,7 @@ body {
 
 /* Style pour le titre */
 h1 {
-    color: #86635a;
+    color: #007BFF;
 }
 
 /* Style pour la phrase de bienvenue */
@@ -22,7 +22,7 @@ h1 {
     text-shadow: 1px 1px 3px white; /* Ajouter un contour blanc */
     font-size: 18px; /* Ajuster la taille */
     margin-bottom: 20px; /* Espacement avec les autres éléments */
-    color: #86635a; /* Couleur du texte */
+    color: #1d31a0; /* Couleur du texte */
 }
 
 
