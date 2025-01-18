@@ -42,6 +42,21 @@ button:hover {
     background-color: #0056b3;
 }
 
+a button {
+    background-color: #2e8b57; /* Vert foncé */
+    color: white; /* Texte en blanc */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Effet au survol */
+a button:hover {
+    background-color: #1f6a41; /* Une teinte encore plus foncée au survol */
+}
+
 /* Style pour le conteneur du quiz */
 #quiz-container {
     margin: 20px auto;
